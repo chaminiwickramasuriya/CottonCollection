@@ -1,0 +1,96 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+      <!--<a routerLink="/sign-up" routerLinkActive="active" href="#" class="btn btn-default btn-sm"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp; Sign Up</a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" routerLinkActive="active"  href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Log In</i></a>
+      </div>
+      <div class="btn-group">
+        <a routerLink="/main/dashboard" routerLinkActive="active"  href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Log Out</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="/main/cart-orders" href="#" class="btn btn-default btn-sm">View-CartOrders</a>
+      <a routerLink="/main/view-customer" href="#" class="btn btn-default btn-sm">View Customer</a>
+      <a routerLink="/main/category-management" href="#" class="btn btn-default btn-sm">Add Category</a>
+      <a routerLink="/main/admin-contact" href="#" class="btn btn-default btn-sm">Contact</a>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="column1" style="background-color:white;">
+    <div class="card-header">
+      <h3 class="card-title">View Mails</h3>
+      <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>E-mail Id</th>
+                    <th>E-mail</th>
+                    <th>Subject</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let contact of contacts  | paginate: { itemsPerPage: 15, currentPage: p }  "
+                      (click)="selectedContact(contact)" [class.selected]="contact==selectedContact">
+                    <td>{{contact.mailId}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.subject}}</td>
+                    <td>
+                      <i (click)="deleteContact(contact)" class="fa fa-trash fa-1x"></i>
+                    </td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <td colspan="6">
+                      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    </div>
+
+
+
+    <div class="column" style="background-color:white;">
+      <!--cart mail show-->
+      <section class="content">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <div class="small-box ">
+                <div class="inner">
+                  <p style="font-size: 20px"><b><i class="fa fa-envelope-o"></i>&nbsp;Inbox</b></p>
+                </div>
+                <p class="form-group">
+                  <select class="form-control" [(ngModel)]="selectedContact" >
+                    <option *ngFor="let contact of contacts" [ngValue]="contact">{{contact.email}}</option>
+                  </select>
+                  <input class="form-control" id="txtMessage" value="{{selectedContact.message}}" readonly>
+                </p>
+              </div>
+            </div>
+          </div>
+      </section>
+    </div>
+</div>

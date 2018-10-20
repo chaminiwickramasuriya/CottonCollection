@@ -1,0 +1,53 @@
+<div class="hero-image" >
+  <img src="assets/images/banners/bannerabout.png" width="100%" height="600px">
+  <div class="hero-text">
+    <div class="login-logo">
+      <b>Register As ....</b>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-12">
+          <form #frmCustomers="ngForm" (ngSubmit)="saveCustomer()">
+            <!--<p class="form-group">-->
+              <!--<input  name="txtCustomerId" [(ngModel)]="selectedCustomer.custId" id="txtCustomerId"-->
+                   <!--placeholder="Customer Id"  class="form-control">-->
+            <!--</p>-->
+            <p class="form-group">
+              <input [disabled]="manuallySelected" name="txtCustomerId" [(ngModel)]="selectedCustomer.custId" id="txtCustomerId"
+                     placeholder="Customer Id" class="form-control">
+            </p>
+
+            <p class="form-group">
+              <input name="txtName" [(ngModel)]="selectedCustomer.custName" id="txtName" class="form-control" placeholder="Customer Name">
+            </p>
+
+            <p class="form-group">
+              <input name="txtAddress" [(ngModel)]="selectedCustomer.address" id="txtAddress"
+                     class="form-control" placeholder="Customer Address">
+            </p>
+            <p class="form-group">
+              <input name="txtAge" [(ngModel)]="selectedCustomer.age" id="txtAge"
+                     class="form-control" placeholder="Customer Age">
+            </p>
+            <p class="form-group">
+              <input name="txtContactNo" [(ngModel)]="selectedCustomer.contactNo" id="txtContactNo"
+                     class="form-control" placeholder="Contact Number">
+            </p>
+            <p class="form-group">
+              <input name="txtEmail" [(ngModel)]="selectedCustomer.email" id="txtEmail" class="form-control" placeholder="E-Mail">
+            </p>
+
+            <div class="form-group">
+                <button class="btn btn-primary " type="submit">Register</button>&nbsp;&nbsp;&nbsp;
+                <button (click)="clear()" type="button" class="btn btn-warning">Clear</button>&nbsp;&nbsp;&nbsp;
+               <br><br>
+               <p>if u already Create an Account..</p>
+               <button type="button" class="btn btn-warning"><a href="/main/aside-common">GoTo</a> </button>
+             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

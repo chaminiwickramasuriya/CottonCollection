@@ -1,0 +1,53 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+        <!--<a routerLink="/sign-up" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Sign Up</i></a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Admin</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="#" href="#" class="btn btn-default btn-sm">Contact</a>
+      <!--<a routerLink="/main/uploadImage" href="#" class="btn btn-default btn-sm">uploadImage</a>-->
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="hero-image">
+  <img src="assets/images/imgwal.jpg" width="100%" height="600px">
+  <div class="hero-text">
+     <div class="header">
+          <p><i class="fa fa-map-marker">&nbsp;&nbsp; TownHall, Colombo 02</i></p>
+          <p><i class="fa fa-phone">&nbsp;&nbsp; + 112 234 566</i></p>
+          <p><i class="fa fa-search">&nbsp;&nbsp; <a href="www.cottoncollection.com">www.cottoncollection.com</a></i></p>
+       <form #frmContact="ngForm" (ngSubmit)="saveContact()">
+            <p class="form-group">
+              <label>E-Mail Address</label>
+              <input [disabled]="manuallySelected" type="email" class="form-control" [(ngModel)]="selectedContact.email" id="exampleInputEmail1"
+                     name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+            </p>
+            <p class="form-group">
+              <label>Subject</label>
+              <input type="text" class="form-control" [(ngModel)]="selectedContact.subject" id="subject" name="subject" placeholder="Subject">
+            </p>
+            <p class="form-group">
+              <label>Message</label>
+              <textarea class="form-control" [(ngModel)]="selectedContact.message" id="exampleTextarea" name="exampleTextarea" rows="3"></textarea>
+            </p><br>
+            <!--<button type="button" class="btn btn-outline-success">Submit</button>-->
+            <div class="form-group">
+              <button class="btn btn-outline-success " type="submit">Send Mail</button>
+            </div>
+       </form>
+     </div>
+  </div>
+</div>
+<br>

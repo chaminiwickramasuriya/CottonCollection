@@ -1,0 +1,126 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+      <!--<a routerLink="/sign-up" routerLinkActive="active" href="#" class="btn btn-default btn-sm"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp; Sign Up</a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" routerLinkActive="active"  href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Log In</i></a>
+      </div>
+      <div class="btn-group">
+        <a routerLink="/main/dashboard" routerLinkActive="active"  href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Log Out</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="/main/cart-orders" href="#" class="btn btn-default btn-sm">View-CartOrders</a>
+      <a routerLink="/main/view-customer" href="#" class="btn btn-default btn-sm">View Customer</a>
+      <a routerLink="/main/category-management" href="#" class="btn btn-default btn-sm">Add Category</a>
+      <a routerLink="/main/admin-contact" href="#" class="btn btn-default btn-sm">Contact</a>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="card-body">
+  <div class="row">
+      <div class="column1" style="background-color:white">
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-12">
+          <form #frmCategory="ngForm" (ngSubmit)="saveCategory()">
+            <p class="form-group">
+              <input  name="catCode" [(ngModel)]="selectedCategory.catCode" id="catCode"
+                      placeholder="Category Code"  class="form-control">
+            </p>
+
+            <p class="form-group">
+              <input name="catName" [(ngModel)]="selectedCategory.catName" id="catName" class="form-control" placeholder="Category Name">
+            </p>
+
+            <p class="form-group">
+              <input name="catType" [(ngModel)]="selectedCategory.catType" id="catType"
+                     class="form-control" placeholder="Category Type">
+            </p>
+            <p class="form-group">
+              <input name="catPrice" [(ngModel)]="selectedCategory.catPrice" id="catPrice"
+                     class="form-control" placeholder="Unit Price">
+            </p>
+            <p class="form-group">
+              <input name="qtyOnHand" [(ngModel)]="selectedCategory.qtyOnHand" id="qtyOnHand"
+                     class="form-control" placeholder="Quantity">
+            </p>
+            <p class="form-group">
+              <input name="size" [(ngModel)]="selectedCategory.size" id="size"
+                     class="form-control" placeholder="Size">
+            </p>
+            <!--<p class="form-group">-->
+              <!--<input name="txtImageId" [(ngModel)]="selectedCategory.imgId" id="txtImageId"-->
+                     <!--class="form-control" placeholder="Image Id">-->
+            <!--</p>-->
+            <div class="col-md-6">
+              <form method="post"  enctype="multipart/form-data" >
+                <label>Upload Your Image </label>
+                <input type="file" class="form-control"  name="file" id="file" (change)="setImage($event)" >
+                <!--onchange="setImage($event)"--><br>
+
+              </form>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary " type="submit">Save Category</button>&nbsp;&nbsp;&nbsp;
+              <button (click)="clear()" type="button" class="btn btn-warning">Clear</button>&nbsp;&nbsp;&nbsp;
+              <!--<button class="btn btn-primary "><i class="fa fa-arrow-left" ><a routerLink="/main/dashboard" ></a></i></button>-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    <div class="column" style="background-color:white">
+      <div class="col-md-6 col-12">
+        <table id="tblItems" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Category Name</th>
+            <th>Category Type</th>
+            <th>Category Size</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let category of categories  | paginate: { itemsPerPage: 15, currentPage: p } "
+              (click)="selectedCategory(category)" [class.selected]="category==selectedCategory">
+            <td>{{category.catCode}}</td>
+            <td>{{category.catName}}</td>
+            <td>{{category.catType}}</td>
+            <td>{{category.size}}</td>
+            <td>{{category.catPrice}}</td>
+            <td>{{category.qtyOnHand}}</td>
+            <td>
+              <i (click)="deleteCategory(category)" class="fa fa-trash fa-1x"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="7">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

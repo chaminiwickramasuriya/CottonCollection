@@ -1,0 +1,159 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+        <!--<a routerLink="/sign-up" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Sign Up</i></a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Admin</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="/main/contact" href="#" class="btn btn-default btn-sm">Contact</a>
+      <!--<a routerLink="/main/uploadImage" href="#" class="btn btn-default btn-sm">uploadImage</a>-->
+    </div>
+  </div>
+</div>
+<br>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-12">
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Reservation Information</h3>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-12">
+                <p class="form-group">
+                  <label for="txtdate">Oder Date</label>
+                  <input type="date" id="txtdate" #orderDate class="form-control">
+                </p>
+
+                <p class="form-group">
+                  <label>Customer ID</label>
+                  <select class="form-control" [(ngModel)]="selectedCustomer">
+                    <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.custId}}</option>
+                  </select>
+                  <label>Customer Name</label>
+                  <input class="form-control" id="txtName" value="{{selectedCustomer.custName}}" readonly>
+                </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="form-group">
+                      <label>Item Code</label>
+                      <select class="form-control" [(ngModel)]="selectedCategory">
+                        <option *ngFor="let category of categories" [ngValue]="category">{{category.catCode}}</option>
+                      </select>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="form-group">
+                      <label>Category Name</label>
+                      <input [(ngModel)]="selectedCategory.catName" id="txtCatName"
+                             class="form-control" readonly>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="form-group">
+                      <label>Qty On Hand</label>
+                      <input [(ngModel)]="selectedCategory.qtyOnHand" id="txtQtyOnHand"
+                             class="form-control" readonly>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="form-group">
+                      <label>Unit Price</label>
+                      <input [(ngModel)]="selectedCategory.catPrice" id="txtUp"
+                             class="form-control" readonly>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="form-group">
+                      <label>Qty</label>
+                      <input id="qty" #qty class="form-control">
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-outline-info fa fa-refresh" (click)="addCategory(qty.value)"> Add To Table</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <div class="col-md-6 col-12">
+        <table id="tblItems" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Category Code</th>
+            <th>Category Name</th>
+            <th>Category Type</th>
+            <th>Category Price</th>
+            <th>Category Size</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let reservation of reservations  | paginate: { itemsPerPage: 15, currentPage: p }  ">
+              <!--(click)="selectedCategory(category)" [class.selected]="category==selectedCategory">-->
+            <td>{{reservation.category.catCode}}</td>
+            <td>{{reservation.category.catName}}</td>
+            <td>{{reservation.category.catType}}</td>
+            <td>{{reservation.category.catPrice}}</td>
+            <td>{{reservation.category.size}}</td>
+            <td>{{reservation.order_qty}}</td>
+            <td>{{reservation.total_amount}}</td>
+            <td>
+              <i (click)="removeCategory(category)" class="fa fa-trash fa-1x"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="8">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+        <div class="row">
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary fa fa-cart-plus" (click)="placeOrder(orderDate.value)"> Add To Cart</button>
+          </div>
+          <div class="col-md-4">
+            <label>Total Amount :</label>
+          </div>
+          <div class="col-md-4">
+            <input name="txtTotalAmount" id="finalTotal" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+
+<br>

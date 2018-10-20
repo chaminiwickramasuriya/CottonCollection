@@ -1,0 +1,32 @@
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+<div class="hero-image" >
+     <img src="assets/images/banners/bannerabout.png" width="100%" height="600px">
+  <div class="hero-text">
+    <div class="login-logo">
+      <b>Login As ....</b>
+    </div>
+    <form  [formGroup]="formdata" action="" method="post" (ngSubmit)="onClickSubmit(formdata.value)">
+      <p class="form-group">
+        <input type="text" name="userName" formControlName="userName" id="userName"
+               class="form-control" placeholder="Username">
+      </p>
+      <p class="form-group">
+        <input type="password" name="passWord" formControlName="passWord" id="passWord"
+               class="form-control" placeholder="Password">
+      </p>
+      <div class="form-group">
+        <button class="btn btn-primary">Login</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary "><a href="/main/dashboard" >DashBoard</a></button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+    </div>
+
+
+
+
+

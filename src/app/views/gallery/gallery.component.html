@@ -1,0 +1,37 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+        <!--<a routerLink="/sign-up" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Sign Up</i></a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Admin</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="/main/contact" href="#" class="btn btn-default btn-sm">Contact</a>
+      <!--<a routerLink="/main/uploadImage" href="#" class="btn btn-default btn-sm">uploadImage</a>-->
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'all'" (click)="filterBy= 'all'" >All</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'bracelates'" (click)="filterBy= 'bracelates'">Bracelates</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'frocks'" (click)="filterBy= 'frocks'">Frocks</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'sarees'" (click)="filterBy= 'sarees'">Sarees</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'lehenga'" (click)="filterBy= 'lehenga'" >Lehenga</button>&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-lg btn-info" [class.active]="filterBy == 'watches'" (click)="filterBy= 'watches'">Watches</button>&nbsp;&nbsp;&nbsp;
+  <ul id="thumbnailsList">
+    <li *ngFor="let images of (visibleImages | imageFilter:filterBy)">
+       <img src="{{images.url}}" class="tn" width="200px" height="160px">
+    </li>
+  </ul>
+</div>

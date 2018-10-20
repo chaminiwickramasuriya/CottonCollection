@@ -1,0 +1,91 @@
+<div class="first-nav">
+  <div id="header-top-second"  class="clearfix">
+    <div class="header-top-dropdown text-right">
+      <!--<div class="btn-group">-->
+        <!--<a routerLink="/sign-up" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Sign Up</i></a>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <a routerLink="/login" href="#" class="btn btn-default btn-sm"><i class="fa fa-user">&nbsp;&nbsp;&nbsp; Admin</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="third-nav">
+  <div class="header-top-dropdown text-right">
+    <div class="btn-group">
+      <a routerLink="/main/gallery" href="#" class="btn btn-default btn-sm">Gallery</a>
+      <a routerLink="/main/contact" href="#" class="btn btn-default btn-sm">Contact</a>
+      <!--<a routerLink="/main/uploadImage" href="#" class="btn btn-default btn-sm">uploadImage</a>-->
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="column1" style="background-color:white;">
+    <div class="sidenav"><b>
+      <a href="#" onclick="filterSelection('men')"> Men</a>
+      <!--nature-->
+      <a href="#" onclick="filterSelection('women')"> Women</a>
+      <!--cars-->
+      <a href="#" onclick="filterSelection('boys')"> Boys</a>
+      <!--people-->
+      <a href="#" onclick="filterSelection('girls')"> Girls</a>
+    </b>
+      <hr>
+      <b>CATEGORIES</b>
+      <fieldset class="form-group">
+        <div class="form-check">
+          <table>
+            <tbody>
+            <tr><td>T-Shirt-Men</td></tr>
+            <tr><td>T-Shirt-Ladies</td></tr>
+            <tr><td>Shorts-Boys</td></tr>
+            <tr><td>Shorts-Girls</td></tr>
+            <tr><td>Trousers-Boys</td></tr>
+            <tr><td>Trousers-Girls</td></tr>
+            <tr><td>Frocks</td></tr>
+            <tr><td>Skirts</td></tr>
+            <tr><td>Lehenga</td></tr>
+            <tr><td>Saree</td></tr>
+            <tr><td>Kurtha</td></tr>
+            <tr><td>Shoes-Ladies</td></tr>
+            <tr><td>Shoes-Men</td></tr>
+            <tr><td>Shoes-Kids</td></tr>
+            <tr><td>Watches-Ladies</td></tr>
+            <tr><td>Watches-Gents</td></tr>
+            <tr><td>Watches-Kids</td></tr>
+            <tr><td>Bracelets</td></tr>
+            <tr><td>Necklaces</td></tr>
+            <tr><td>Earrings</td></tr>
+            <tr><td>Wallets</td></tr>
+            <tr><td>Belts</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="column" style="background-color:white;">
+    <div class="row">
+      <div class="card mb-3" style="width: 180px; margin-left: 10px;" *ngFor="let category of categories">
+        <div class="card-body">
+          <div class="overlay">
+          <img class="card-img-top" [src]="category.imgPath" alt="Card Image">
+            <p class="card-text">{{category.catCode}}</p>
+          <p class="card-text">{{category.catName}}</p>
+          <p class="card-text">RS: {{category.catPrice}}</p>
+          <div class="middle">
+            <div class="cart">
+              <button routerLink="/main/cart" style="color: black; background-color: #1c7430; width: 130px" >
+                <i class="fa fa-shopping-cart">&nbsp;&nbsp; Reserved</i></button>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+

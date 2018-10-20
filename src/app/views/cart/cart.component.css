@@ -1,0 +1,47 @@
+
+.first-nav{
+  width: 100%;
+  height: 40px;
+  background-color: black;
+}
+
+.third-nav{
+  width: 100%;
+  height: 40px;
+  background-color:darkgray;
+}
+
+
+
+
+#tblItems tbody{
+  background-color: white;
+}
+
+#tblItems tr{
+  cursor: pointer;
+}
+
+#tblItems th{
+  background-color: black;
+}
+
+#tblItems th{
+  color: white;
+}
+
+#tblItems tr th:first-child, #tblItems tr td:first-child{
+  text-align: center;
+}
+
+#tblItems tr td:last-child{
+  text-align: center;
+}
+
+#tblItems tr td:last-child:hover{
+  color: red;
+}
+
+.selected{
+  background-color: lightgray;
+}
